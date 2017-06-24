@@ -4,7 +4,9 @@ import (
 	"html/template"
 	"net/http"
 
-	"github.com/jgsqware/ABeerADay/breweryDB"
+	"fmt"
+
+	"github.com/jgsqware/a-beer-a-day/breweryDB"
 )
 
 var beerTmpl = `<!DOCTYPE html>
@@ -62,6 +64,7 @@ var beerTmpl = `<!DOCTYPE html>
 
 func main() {
 
+	fmt.Println("Starting a-beer-a-day server...")
 	c := breweryDB.NewClient("98bf6f0fc30df4fa79495150c567d07c")
 	http.HandleFunc("/", func(rw http.ResponseWriter, req *http.Request) {
 		b, err := c.RandomBeer()
