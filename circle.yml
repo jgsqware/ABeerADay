@@ -1,6 +1,7 @@
 machine:
   environment:
     PROJECT_NAME: ABeerADay
+    PROJECT_ID: jgsqware-lab
     CLUSTER_NAME: a-beer-a-day
     CLOUDSDK_COMPUTE_ZONE: us-central1-a
 dependencies:
