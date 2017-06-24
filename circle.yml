@@ -4,6 +4,7 @@ machine:
     PROJECT_ID: jgsqware-lab
     CLUSTER_NAME: a-beer-a-day
     CLOUDSDK_COMPUTE_ZONE: us-central1-a
+
 dependencies:
   pre:
     - sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update --version 120.0.0
@@ -15,11 +16,11 @@ dependencies:
     - sudo /opt/google-cloud-sdk/bin/gcloud config set compute/zone ${CLOUDSDK_COMPUTE_ZONE}
     - sudo /opt/google-cloud-sdk/bin/gcloud --quiet container clusters get-credentials $CLUSTER_NAME
 
-compile:
-    - go get -t -d -v ./...
-    - go build -v
-    - docker build -t us.gcr.io/${PROJECT_NAME}/${PROJECT_NAME}:$CIRCLE_SHA1 .
-    - docker tag us.gcr.io/${PROJECT_NAME}/${PROJECT_NAME}:$CIRCLE_SHA1 us.gcr.io/${PROJECT_NAME}/${PROJECT_NAME}:latest
+# compile:
+#     - go get -t -d -v ./...
+#     - go build -v
+#     - docker build -t us.gcr.io/${PROJECT_NAME}/${PROJECT_NAME}:$CIRCLE_SHA1 .
+#     - docker tag us.gcr.io/${PROJECT_NAME}/${PROJECT_NAME}:$CIRCLE_SHA1 us.gcr.io/${PROJECT_NAME}/${PROJECT_NAME}:latest
 
 deployment:
   prod:
