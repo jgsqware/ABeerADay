@@ -22,8 +22,8 @@ compile:
   override:
     - go get -t -d -v ./...
     - go build -v
-    - docker build -t quay.io/${PROJECT_ID}/${PROJECT_NAME}:$CIRCLE_SHA1 .
-    - docker tag quay.io/${PROJECT_ID}/${PROJECT_NAME}:$CIRCLE_SHA1 quay.io/${PROJECT_ID}/${PROJECT_NAME}:latest
+    - docker build -t quay.io/juliengarcia/${PROJECT_NAME}:$CIRCLE_SHA1 .
+    - docker tag quay.io/juliengarcia/${PROJECT_NAME}:$CIRCLE_SHA1 quay.io/juliengarcia/${PROJECT_NAME}:latest
 
 deployment:
   prod:
