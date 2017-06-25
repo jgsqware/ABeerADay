@@ -1,4 +1,6 @@
 machine:
+  services:
+    - docker
   environment:
     PROJECT_NAME: a-beer-a-day
     PROJECT_ID: jgsqware-lab
