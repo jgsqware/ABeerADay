@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: a-beer-a-day
-          image: quay.io/jgsqware/a-beer-a-day:72b5ced0b57bd2291a87bd4a355e7774c547c007
+          image: quay.io/jgsqware/a-beer-a-day:latest
           args: ["run"]
           ports:
             - containerPort: 8080
