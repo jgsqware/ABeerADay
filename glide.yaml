@@ -1,0 +1,3 @@
+package: github.com/jgsqware/a-beer-a-day
+import:
+- package: github.com/spf13/cobra

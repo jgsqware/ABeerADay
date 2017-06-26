@@ -17,13 +17,14 @@ dependencies:
     - sudo /opt/google-cloud-sdk/bin/gcloud --quiet config set container/cluster $CLUSTER_NAME
     - sudo /opt/google-cloud-sdk/bin/gcloud config set compute/zone ${CLOUDSDK_COMPUTE_ZONE}
     - sudo /opt/google-cloud-sdk/bin/gcloud --quiet container clusters get-credentials $CLUSTER_NAME
+  - |
+      wget -q $(curl -sS -H "Authorization: token $RELEASE_TOKEN" https://api.github.com/repos/giantswarm/architect/releases/latest | grep browser_download_url | head -n 1 | cut -d '"' -f 4)
+    - chmod +x ./architect
+    - ./architect version
 
 compile:
   override:
-    - go get -t -d -v ./...
-    - go build -v
-    - docker build -t quay.io/juliengarcia/${PROJECT_NAME}:$CIRCLE_SHA1 .
-    - docker tag quay.io/juliengarcia/${PROJECT_NAME}:$CIRCLE_SHA1 quay.io/juliengarcia/${PROJECT_NAME}:latest
+    - ./architect build 
 
 deployment:
   prod:
