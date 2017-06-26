@@ -59,6 +59,12 @@ var beerTmpl = `<!DOCTYPE html>
               <dd>
                 {{.Description}}
               </dd>
+              <dt>
+                Version
+              </dt>
+              <dd>
+                0.0.1
+              </dd>
             </dl>
           </div>
           <div class="col-md-4">
