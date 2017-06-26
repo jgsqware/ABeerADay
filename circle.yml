@@ -23,7 +23,7 @@ dependencies:
     - chmod +x ./architect
     - ./architect version
 
-compile:
+test:
   override:
     - ./architect build --registry quay.io
 
