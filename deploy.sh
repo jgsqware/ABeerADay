@@ -6,4 +6,5 @@ docker push quay.io/jgsqware/${PROJECT_NAME}:$(git log --format="%H" -n 1)
 docker push quay.io/jgsqware/${PROJECT_NAME}:latest
 sudo chown -R ubuntu:ubuntu /home/ubuntu/.kube
 sudo chown -R $USER /home/ubuntu/.config
+sed -i 's/{{SHA1}}/'$(git log --format="%H" -n 1)'/' kubernetes/deployment.yaml
 kubectl apply -f kubernetes/deployment.yaml

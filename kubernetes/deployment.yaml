@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: a-beer-a-day
-          image: quay.io/jgsqware/a-beer-a-day:latest
+          image: quay.io/jgsqware/a-beer-a-day:{{SHA1}}
           imagePullPolicy: Always
           args: ["run"]
           ports:
