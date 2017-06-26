@@ -25,7 +25,7 @@ dependencies:
 
 compile:
   override:
-    - ./architect build 
+    - ./architect build --registry quay.io
 
 deployment:
   prod:
