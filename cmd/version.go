@@ -22,6 +22,8 @@ import (
 
 const version = "0.0.1"
 
+var buildTime string
+
 // versionCmd represents the version command
 var versionCmd = &cobra.Command{
 	Use:   "version",
@@ -29,6 +31,7 @@ var versionCmd = &cobra.Command{
 	Long:  ``,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("Version", version)
+		fmt.Println("BuildTime", buildTime)
 	},
 }
 

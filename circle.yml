@@ -19,7 +19,7 @@ dependencies:
     - sudo /opt/google-cloud-sdk/bin/gcloud --quiet container clusters get-credentials $CLUSTER_NAME
   override:
     - |
-        wget -q https://github.com/giantswarm/architect/releases/download/da9565a/architect
+        wget -q https://github.com/jgsqware/architect/releases/download/b1b8d31/architect
     - chmod +x ./architect
     - ./architect version
     
@@ -33,7 +33,7 @@ dependencies:
 
 test:
   override:
-    - ./architect build --registry quay.io
+    - ./architect build --registry quay.io --ldflags "-X github.com/jgsqware/a-beer-a-day/cmd.buildTime=`date -u +.%Y%m%d.%H%M%S`"
 
 deployment:
   prod:
@@ -43,5 +43,5 @@ deployment:
       - docker tag quay.io/jgsqware/${PROJECT_NAME}:$(git log --format="%H" -n 1) quay.io/jgsqware/${PROJECT_NAME}:latest
       - docker push quay.io/jgsqware/${PROJECT_NAME}:$(git log --format="%H" -n 1)
       - docker push quay.io/jgsqware/${PROJECT_NAME}:latest
-      - sudo ./clairctl analyze quay.io/jgsqware/${PROJECT_NAME}:$(git log --format="%H" -n 1)
+      - sudo ./clairctl analyze -f High quay.io/jgsqware/${PROJECT_NAME}:$(git log --format="%H" -n 1)
       - ./deploy.sh
