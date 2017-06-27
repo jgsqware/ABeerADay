@@ -51,19 +51,19 @@ var beerTmpl = `<!DOCTYPE html>
                 Name
               </dt>
               <dd>
-                {{.NameDisplay}}
+                {{.Beer.NameDisplay}}
               </dd>
               <dt>
                 Description
               </dt>
               <dd>
-                {{.Description}}
+                {{.Beer.Description}}
               </dd>
               <dt>
-                Version
+                Build Time:
               </dt>
               <dd>
-                0.0.1
+                {{.BuiltTime}}
               </dd>
             </dl>
           </div>
@@ -97,7 +97,13 @@ var runCmd = &cobra.Command{
 				panic(err)
 			}
 
-			template.Must(template.New("beerTmpl").Parse(beerTmpl)).Execute(rw, b)
+			template.Must(template.New("beerTmpl").Parse(beerTmpl)).Execute(rw, struct {
+				Beer      breweryDB.Beer
+				BuiltTime string
+			}{
+				b,
+				buildTime,
+			})
 		})
 
 		if err := http.ListenAndServe(":8080", nil); err != nil {
