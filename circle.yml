@@ -22,10 +22,19 @@ dependencies:
         wget -q https://github.com/giantswarm/architect/releases/download/da9565a/architect
     - chmod +x ./architect
     - ./architect version
+    
+    - |
+        wget -q https://github.com/jgsqware/clairctl/releases/download/v1.2.8/clairctl-linux-amd64
+    - chmod +x ./clairctl-linux-amd64
+    - mv clairctl-linux-amd64 clairctl
+    - ./clairctl version
+
+    
 
 test:
   override:
     - ./architect build --registry quay.io
+    - clairctl analyze quay.io/jgsqware/${PROJECT_NAME}:$(git log --format="%H" -n 1)
 
 deployment:
   prod:
