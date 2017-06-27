@@ -1,0 +1,4 @@
+clair:
+  uri: http://146.148.100.169
+auth:
+  insecureSkipVerify: true

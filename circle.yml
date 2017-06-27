@@ -34,7 +34,7 @@ dependencies:
 test:
   override:
     - ./architect build --registry quay.io
-    - clairctl analyze quay.io/jgsqware/${PROJECT_NAME}:$(git log --format="%H" -n 1)
+    - ./clairctl analyze quay.io/jgsqware/${PROJECT_NAME}:$(git log --format="%H" -n 1)
 
 deployment:
   prod:
