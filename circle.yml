@@ -6,7 +6,7 @@ machine:
     PROJECT_ID: jgsqware-lab
     CLUSTER_NAME: a-beer-a-day
     CLOUDSDK_COMPUTE_ZONE: us-central1-a
-
+    CLOUDSDK_CORE_PROJECT: jgsqware-lab
 dependencies:
   pre:
     - sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update --version 159.0.0 kubectl
