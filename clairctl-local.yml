@@ -1,0 +1,4 @@
+clair:
+  uri: http://clair
+auth:
+  insecureSkipVerify: true

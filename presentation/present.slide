@@ -1,0 +1,93 @@
+How to avoid to pay gold for SECURITY
+Clair & Clairctl to the rescue
+29 Jun 2017
+Tags: Golang, Clair, Security, Beer
+
+Julien Garcia Gonzalez
+Golang developer &  DevOps facilitator, TBD (soon...)
+garciagonzalez.julien@gmail.com
+http://github.com/jgsqware
+@jgsqware
+
+
+* 
+
+.image whoami.png 600 _
+
+* Recap
+
+Your current pipeline:
+
+  Github -->   CircleCI   -->     Quay.io     --> Kubernetes
+              ↳ Architect       ↳ Clair scan     ↳ Draughtman
+
+Proposed pipeline:
+
+  Github -->   CircleCI   --> Any registry --> Kubernetes
+              ↳ Architect                               ↳ Draughtman
+                 Clairctl
+                    ↳ Clair
+
+* How did you interpret the task?
+
+* How did you interpret the task?
+
+** Questions 
+
+- What is *architect*? Could I use it?
+- What is *draughtman*?
+
+* How did you interpret the task?
+
+** Assumption
+
+- * Real Need *
+- Quay.io is expensive, need alternative
+
+* How did you decide on the design for clairctl?
+
+* Why?
+
+- Weekend project (working on during commute)
+- Learn Go
+- CLI, I 🖤 CLI
+- Great UI/UX
+
+* How Clair is designed?
+
+.image clair-framework.png
+
+* Why Clairctl?
+
+.image ci.png _ 1024
+
+* Why Clairctl?
+
+.image ci-resolved.png _ 1024
+
+* Why Clairctl?
+
+.image ci-local.png _ 1024
+
+* Clairctl features
+
+- Push *From* any registry (almost) *To* `Clair` server 
+- Analyze local image before pushing it on a registry
+- Generate HTML report
+
+.link report.html
+
+* Clairctl - Limitation
+
+- Many user complains about Error 400 on Clair (reverse proxy and authentication)
+- For local analysis, `Clairctl` machine should be visible by `Clair` server
+- Amazon ECR login not working
+- Time to work on
+
+* Clairctl - Future
+
+- gRPC for Clair 3.0 (push layer implementation)
+- Integrate seamlessly with cluster manager like Kubernetes (PR on going)
+- Auto-Setup
+- Better integration with CI system
+
